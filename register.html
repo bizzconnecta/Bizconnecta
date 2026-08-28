@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BIZCONNECTA Create Account</title>
+
+    <link rel="stylesheet" href="/css/register.css">
+    
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         REGISTRATION PAGE
+    ================================== -->
+
+    <main class="register-page">
+
+
+        <!-- =================================
+             REGISTRATION CONTAINER
+        ================================== -->
+
+        <section class="register-container">
+
+
+            <!-- LOGO -->
+
+            <header class="register-header">
+
+                <div class="register-logo">
+                    BIZCONNECTA
+                </div>
+
+                <p>
+                    Collaboration • Grow • Connect
+                </p>
+
+            </header>
+
+
+            <!-- REGISTRATION FORM -->
+
+            <section class="register-section">
+
+                <h1>
+                    Create Your Account
+                </h1>
+
+                <p>
+                    Join BIZCONNECTA and start growing with us.
+                </p>
+
+
+                <!-- FIXED: REMOVED the action attribute -->
+                <form method="post">
+
+
+                    <!-- FIRST NAME -->
+
+                    <div class="form-group">
+
+                        <label for="first-name">
+                            First Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="first-name"
+                            name="first_name"
+                            placeholder="Enter your first name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- LAST NAME -->
+
+                    <div class="form-group">
+
+                        <label for="last-name">
+                            Last Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="last-name"
+                            name="last_name"
+                            placeholder="Enter your last name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- USERNAME -->
+
+                    <div class="form-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Choose a username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirm-password">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirm-password"
+                            name="confirm_password"
+                            placeholder="Confirm your password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- REFERRAL CODE -->
+
+                    <div class="form-group">
+
+                        <label for="referral-code">
+                            Referral Code
+                        </label>
+
+                        <input
+                            type="text"
+                            id="referral-code"
+                            name="referral_code"
+                            placeholder="Enter referral code (optional)"
+                        >
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <div class="terms">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                name="terms"
+                                required
+                            >
+
+                            I agree to the
+
+                            <a href="Terms-and-condition.html">
+                                Terms & Conditions
+                            </a>
+
+                            and
+
+                            <a href="#">
+                                Privacy Policy
+                            </a>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- REGISTER BUTTON -->
+
+                    <button
+                        type="submit"
+                    >
+                        Create Account
+                    </button>
+
+
+                </form>
+
+
+                <!-- LOGIN LINK -->
+
+                <div class="login-link">
+
+                    <p>
+
+                        Already have an account?
+
+                        <a href="login.html">
+                            Login
+                        </a>
+
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+    
+    <!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Your Config File -->
+<script src="supabase-config.js"></script>
+
+<script>
+    document.querySelector('form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const first_name = document.getElementById('first-name').value;
+        const last_name = document.getElementById('last-name').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        const full_name = first_name + ' ' + last_name;
+
+        // Insert into the database
+        const { data, error } = await supabase
+            .from('users')
+            .insert([
+                { full_name: full_name, email: email, password: password }
+            ]);
+
+        if (error) {
+            alert('Error creating account: ' + error.message);
+        } else {
+            alert('Account created successfully!');
+            window.location.href = '../pages/dashboard/dashboard.html';
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BIZCONNECTA Login</title>
+
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+
+
+    <!-- =================================
+         LOGIN PAGE
+    ================================== -->
+
+    <main class="login-page">
+
+
+        <!-- =================================
+             LOGIN CONTAINER
+        ================================== -->
+
+        <section class="login-container">
+
+
+            <!-- LOGO -->
+
+            <header class="login-header">
+
+                <div class="login-logo">
+                    BIZCONNECTA
+                </div>
+
+                <p>
+                    Collaboration • Grow • Connect
+                </p>
+
+            </header>
+
+
+            <!-- LOGIN FORM -->
+
+            <section class="login-section">
+
+                <h1>
+                    Welcome Back
+                </h1>
+
+                <p>
+                    Login to your BIZCONNECTA account.
+                </p>
+
+
+                <!-- FIXED: REMOVED the action attribute -->
+                <form method="post">
+
+
+                    <!-- USERNAME -->
+
+                    <div class="form-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- REMEMBER + FORGOT -->
+
+                    <div class="login-options">
+
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                name="remember"
+                            >
+
+                            Remember me
+
+                        </label>
+
+
+                        <a href="forgot-password.html">
+                            Forgot Password?
+                        </a>
+
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                    >
+                        Login
+                    </button>
+
+
+                </form>
+
+
+                <!-- REGISTER -->
+
+                <div class="register-link">
+
+                    <p>
+
+                        Don't have an account?
+
+                        <a href="register.html">
+                            Create Account
+                        </a>
+
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+    
+   <!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- Your Config File -->
+<script src="supabase-config.js"></script>
+
+<script>
+    document.querySelector('form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Query the database to find this user
+        const { data, error } = await supabase
+            .from('users')
+            .select('*')
+            .eq('email', email)
+            .eq('password', password)
+            .single();
+
+        if (error || !data) {
+            alert('Invalid username or password.');
+        } else {
+            alert('Login successful! Welcome back, ' + data.full_name + '!');
+            window.location.href = '../pages/dashboard/dashboard.html';
+        }
+    });
+</script>
+</body>
+
+</html>
