@@ -74,7 +74,7 @@
             font-weight: 500;
         }
 
-        /* FIXED: Dark input fields so text is visible */
+        /* Dark input fields */
         .form-group input {
             width: 100%;
             padding: 14px 15px;
@@ -171,7 +171,8 @@
                 <h1>Create Your Account</h1>
                 <p>Join BIZCONNECTA and start growing with us.</p>
 
-                <form id="registerForm">
+                <!-- FIXED: Added onsubmit="return false;" -->
+                <form id="registerForm" onsubmit="return false;">
                     <!-- FIRST NAME -->
                     <div class="form-group">
                         <label for="first-name">First Name</label>
@@ -259,9 +260,9 @@
             const confirm_password = document.getElementById('confirm-password').value;
             const terms = document.getElementById('terms').checked;
 
-            // Check passwords match
+            // CRITICAL: Check passwords match
             if (password !== confirm_password) {
-                alert('Passwords do not match!');
+                alert('Passwords do not match! Please check and try again.');
                 return;
             }
 
