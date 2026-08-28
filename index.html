@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIZCONNECTA - Save. Grow. Connect.</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <style>
+        /* Landing page specific styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #05051f;
+            color: white;
+        }
+        .landing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(8, 6, 41, 0.9);
+            border-bottom: 1px solid rgba(150,70,255,.2);
+        }
+        .landing-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #a84cff;
+            text-shadow: 0 0 15px rgba(150,60,255,.55);
+        }
+        .landing-header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .landing-header .login-btn {
+            background: transparent;
+            border: 1px solid rgba(150,70,255,.5);
+        }
+        .landing-header .register-btn {
+            background: linear-gradient(135deg, #7625e8, #963cff);
+        }
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #a84cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-section p {
+            font-size: 18px;
+            color: #aaa5c0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-section button {
+            background: linear-gradient(135deg, #7625e8, #963cff);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: #120d42;
+            border: 1px solid rgba(150,70,255,.18);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: #aaa5c0;
+        }
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #26105d, #4610a0);
+            padding: 60px;
+        }
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .cta-section a {
+            background: white;
+            color: #7625e8;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        @media (max-width: 700px) {
+            .features-section {
+                grid-template-columns: 1fr;
+            }
+            .hero-section h1 {
+                font-size: 32px;
+            }
+            .landing-header {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="landing-header">
+        <div class="landing-logo">BIZCONNECTA</div>
+        <div>
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="register.html" class="register-btn">Create Account</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1>Save Money. Grow Your Wealth.</h1>
+        <p>BIZCONNECTA is the smart way to save consistently, earn high interest, and earn rewards for your financial discipline.</p>
+        <button onclick="window.location.href='register.html'">Get Started Free</button>
+    </section>
+
+    <section class="features-section">
+        <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Smart Savings</h3>
+            <p>Automate your savings and watch your money grow with high-interest plans.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎁</div>
+            <h3>Earn Rewards</h3>
+            <p>Earn points for saving, referring friends, and completing milestones.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure & Safe</h3>
+            <p>Your money and data are protected with bank-level security.</p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Start Growing?</h2>
+        <a href="register.html">Join BIZCONNECTA Today</a>
+    </section>
+
+</body>
+</html>
