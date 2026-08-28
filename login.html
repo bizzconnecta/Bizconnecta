@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - BIZCONNECTA</title>
+    <title>Create Account - BIZCONNECTA</title>
 
     <style>
         /* =========================================
-           SINGLE-FILE CSS FOR LOGIN PAGE
+           SINGLE-FILE CSS FOR REGISTER PAGE
         ========================================== */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,17 +22,18 @@
             align-items: center;
         }
 
-        .login-container {
+        .register-container {
             width: 100%;
-            max-width: 420px;
+            max-width: 500px;
             background: #120d42;
             border: 1px solid rgba(150, 70, 255, .18);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, .3);
+            margin: 40px auto; /* Added margin so it can scroll if too tall */
         }
 
-        .login-logo {
+        .register-logo {
             text-align: center;
             font-size: 32px;
             font-weight: 900;
@@ -48,13 +49,13 @@
             margin-bottom: 30px;
         }
 
-        .login-section h1 {
+        .register-section h1 {
             font-size: 26px;
             margin-bottom: 10px;
             text-align: center;
         }
 
-        .login-section > p {
+        .register-section > p {
             color: #aaa5c0;
             font-size: 14px;
             text-align: center;
@@ -73,7 +74,7 @@
             font-weight: 500;
         }
 
-        /* FIXED: Dark input fields */
+        /* Dark input fields */
         .form-group input {
             width: 100%;
             padding: 14px 15px;
@@ -96,40 +97,30 @@
             color: #57526b;
         }
 
-        /* Remember me and Forgot Password */
-        .login-options {
+        /* Checkbox */
+        .terms {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            gap: 10px;
             margin-bottom: 25px;
             font-size: 13px;
             color: #aaa5c0;
         }
 
-        .login-options label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .login-options input[type="checkbox"] {
+        .terms input[type="checkbox"] {
+            margin-top: 3px;
             width: 16px;
             height: 16px;
             accent-color: #7625e8;
         }
 
-        .login-options a {
+        .terms a {
             color: #a84cff;
-            text-decoration: none;
-        }
-
-        .login-options a:hover {
             text-decoration: underline;
         }
 
-        /* Login Button */
-        .login-btn {
+        /* Button */
+        .register-btn {
             width: 100%;
             background: linear-gradient(135deg, #7625e8, #963cff);
             color: white;
@@ -142,26 +133,25 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .login-btn:hover {
+        .register-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(118, 37, 232, .4);
         }
 
-        /* Register Link */
-        .register-link {
+        .login-link {
             text-align: center;
             margin-top: 25px;
             font-size: 14px;
             color: #aaa5c0;
         }
 
-        .register-link a {
+        .login-link a {
             color: #a84cff;
             font-weight: bold;
             text-decoration: none;
         }
 
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
     </style>
@@ -169,47 +159,83 @@
 
 <body>
 
-    <main class="login-page">
-        <section class="login-container">
+    <main class="register-page">
+        <section class="register-container">
 
-            <header class="login-header">
-                <div class="login-logo">BIZCONNECTA</div>
+            <header class="register-header">
+                <div class="register-logo">BIZCONNECTA</div>
                 <div class="header-subtitle">Collaboration • Grow • Connect</div>
             </header>
 
-            <section class="login-section">
-                <h1>Welcome Back</h1>
-                <p>Login to your BIZCONNECTA account.</p>
+            <section class="register-section">
+                <h1>Create Your Account</h1>
+                <p>Join BIZCONNECTA and start growing with us.</p>
 
-                <form id="loginForm">
-                    <!-- USERNAME / EMAIL -->
+                <!-- FIXED: Added onsubmit="return false;" -->
+                <form id="registerForm" onsubmit="return false;">
+                    <!-- FIRST NAME -->
                     <div class="form-group">
-                        <label for="username">Username or Email</label>
-                        <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first_name" placeholder="Enter your first name" required>
+                    </div>
+
+                    <!-- LAST NAME -->
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last_name" placeholder="Enter your last name" required>
+                    </div>
+
+                    <!-- USERNAME -->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    </div>
+
+                    <!-- PHONE -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
                     </div>
 
                     <!-- PASSWORD -->
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" name="password" placeholder="Create a password" required>
                     </div>
 
-                    <!-- REMEMBER ME & FORGOT PASSWORD -->
-                    <div class="login-options">
-                        <label>
-                            <input type="checkbox" name="remember">
-                            Remember me
+                    <!-- CONFIRM PASSWORD -->
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                    </div>
+
+                    <!-- REFERRAL CODE -->
+                    <div class="form-group">
+                        <label for="referral-code">Referral Code (Optional)</label>
+                        <input type="text" id="referral-code" name="referral_code" placeholder="Enter referral code">
+                    </div>
+
+                    <!-- TERMS -->
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">
+                            I agree to the <a href="Terms-and-condition.html">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
                         </label>
-                        <a href="forgot-password.html">Forgot Password?</a>
                     </div>
 
-                    <!-- LOGIN BUTTON -->
-                    <button type="submit" class="login-btn">Login</button>
+                    <!-- REGISTER BUTTON -->
+                    <button type="submit" class="register-btn">Create Account</button>
                 </form>
 
-                <!-- REGISTER LINK -->
-                <div class="register-link">
-                    <p>Don't have an account? <a href="register.html">Create Account</a></p>
+                <!-- LOGIN LINK -->
+                <div class="login-link">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
                 </div>
 
             </section>
@@ -218,31 +244,48 @@
 
     <!-- SINGLE-FILE JAVASCRIPT -->
     <script>
-        // 1. Supabase Configuration (Pasted directly here)
+        // 1. Supabase Configuration (Pasted directly here so no external file is needed)
         const SUPABASE_URL = 'https://ebpoivaipywkbedvkhtg.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_LrJNzNSpKeYJn9ro9o7IQQ_M3knRSL9';
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // 2. Handle Login Form
-        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        // 2. Handle Registration Form
+        document.getElementById('registerForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            const email_or_username = document.getElementById('username').value;
+            const first_name = document.getElementById('first-name').value;
+            const last_name = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const confirm_password = document.getElementById('confirm-password').value;
+            const terms = document.getElementById('terms').checked;
 
-            // Query the database to find this user by email
+            // CRITICAL: Check passwords match
+            if (password !== confirm_password) {
+                alert('Passwords do not match! Please check and try again.');
+                return;
+            }
+
+            // Check terms
+            if (!terms) {
+                alert('Please agree to the Terms & Conditions.');
+                return;
+            }
+
+            const full_name = first_name + ' ' + last_name;
+
+            // Insert into Supabase
             const { data, error } = await supabaseClient
                 .from('users')
-                .select('*')
-                .eq('email', email_or_username)
-                .eq('password', password)
-                .single();
+                .insert([
+                    { full_name: full_name, email: email, password: password }
+                ]);
 
-            if (error || !data) {
-                alert('Invalid username or password. Please try again.');
+            if (error) {
+                alert('Error creating account: ' + error.message);
             } else {
-                alert('Login successful! Welcome back, ' + data.full_name + '!');
-                window.location.href = 'dashboard.html'; // Redirect to Dashboard
+                alert('Account created successfully!');
+                window.location.href = 'dashboard.html'; // Redirect to dashboard
             }
         });
     </script>
