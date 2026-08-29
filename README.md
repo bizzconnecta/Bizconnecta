@@ -1,2 +1,0 @@
-# Bizconnecta
-Bizconnecta
