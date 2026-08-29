@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIZCONNECTA - Smart Savings & Wealth Growth</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <style>
+        /* --- RESET & GLOBAL --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #05051f;
+            color: white;
+        }
+        a { text-decoration: none; }
+        h1, h2, h3, h4, p { margin: 0; padding: 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn-primary { background: linear-gradient(135deg, #7625e8, #963cff); color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; }
+        .btn-secondary { background: transparent; color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold; font-size: 14px; border: 1px solid rgba(150,70,255,.5); cursor: pointer; }
+        
+        /* --- HEADER --- */
+        .header { padding: 15px 0; border-bottom: 1px solid rgba(150,70,255,.15); position: fixed; top: 0; width: 100%; background: rgba(5,5,31,.95); z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: 900; color: #a84cff; text-shadow: 0 0 15px rgba(150,60,255,.55); }
+        .header-links { display: flex; gap: 20px; align-items: center; }
+        .nav-link { color: #aaa5c0; font-size: 14px; font-weight: 500; }
+        .nav-link:hover { color: white; }
+        
+        /* --- HERO --- */
+        .hero { padding: 140px 0 80px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(118,37,232,.15), transparent 50%); z-index: -1; }
+        .hero h1 { font-size: 52px; margin-bottom: 20px; line-height: 1.2; }
+        .hero h1 span { background: linear-gradient(135deg, #fff, #a84cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 18px; color: #aaa5c0; max-width: 700px; margin: 0 auto 40px; line-height: 1.6; }
+        .trust-badges { display: flex; justify-content: center; gap: 30px; margin-top: 30px; font-size: 13px; color: #aaa5c0; }
+        .trust-badge { display: flex; align-items: center; gap: 8px; }
+
+        /* --- HOW IT WORKS --- */
+        .how-it-works { padding: 80px 0; background: rgba(118,37,232,.05); }
+        .section-title { text-align: center; font-size: 36px; margin-bottom: 50px; }
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .step { text-align: center; padding: 30px; background: #120d42; border: 1px solid rgba(150,70,255,.15); border-radius: 16px; }
+        .step-icon { font-size: 40px; margin-bottom: 20px; }
+        .step h3 { font-size: 20px; margin-bottom: 10px; }
+        .step p { font-size: 14px; color: #aaa5c0; line-height: 1.6; }
+
+        /* --- FEATURES / PLANS --- */
+        .plans-section { padding: 80px 0; }
+        .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .plan-card { padding: 30px; border-radius: 16px; border: 1px solid rgba(150,70,255,.15); background: #120d42; position: relative; }
+        .plan-card.featured { background: linear-gradient(145deg, #1b0b53, #120d42); border-color: rgba(164,60,255,.40); }
+        .recommended-tag { position: absolute; top: 15px; right: 15px; background: rgba(146,56,255,.15); color: #bb6bff; padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; }
+        .plan-card h3 { font-size: 20px; margin-bottom: 10px; }
+        .plan-card p { color: #aaa5c0; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+        .plan-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: #0a0631; padding: 10px; border-radius: 8px; text-align: center; }
+        .stat-box span { display: block; font-size: 11px; color: #aaa5c0; margin-bottom: 5px; }
+        .stat-box strong { font-size: 16px; }
+        .plan-card .btn-primary, .plan-card .btn-secondary { width: 100%; display: block; text-align: center; margin-top: 10px; padding: 12px; font-size: 14px; }
+
+        /* --- WHY CHOOSE US --- */
+        .why-us { padding: 80px 0; background: rgba(118,37,232,.05); }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .why-item { display: flex; gap: 15px; padding: 20px; background: #120d42; border-radius: 12px; align-items: flex-start; }
+        .why-icon { font-size: 24px; }
+        .why-item h4 { font-size: 16px; margin-bottom: 5px; }
+        .why-item p { font-size: 13px; color: #aaa5c0; line-height: 1.5; }
+
+        /* --- FINAL CTA --- */
+        .final-cta { padding: 80px 0; text-align: center; background: linear-gradient(135deg, #26105d, #4610a0); }
+        .final-cta h2 { font-size: 36px; margin-bottom: 20px; }
+        .final-cta p { font-size: 18px; margin-bottom: 30px; }
+        .final-cta a { display: inline-block; background: white; color: #7625e8; padding: 15px 40px; border-radius: 10px; font-size: 18px; font-weight: bold; }
+
+        /* --- FOOTER --- */
+        .footer { padding: 50px 0 30px; border-top: 1px solid rgba(150,70,255,.15); }
+        .footer-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .footer-column h5 { font-size: 14px; margin-bottom: 15px; color: white; }
+        .footer-column a { display: block; color: #aaa5c0; font-size: 13px; margin-bottom: 8px; }
+        .footer-column a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid rgba(150,70,255,.1); margin-top: 40px; padding-top: 20px; text-align: center; color: #77728f; font-size: 12px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .steps, .plans-grid, .why-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 38px; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+            .header-links .nav-link { display: none; }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 32px; }
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">BIZCONNECTA</div>
+            <div class="header-links">
+                <a href="#how" class="nav-link">How It Works</a>
+                <a href="#plans" class="nav-link">Savings Plans</a>
+                <a href="#why" class="nav-link">Why Us</a>
+                <a href="login.html" class="btn-secondary">Login</a>
+                <a href="register.html" class="btn-primary">Create Account</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>Save Money.<br><span>Grow Your Wealth.</span></h1>
+            <p>BIZCONNECTA is your trusted partner for disciplined savings and financial growth. Earn high returns, accumulate rewards, and achieve your financial goals with ease.</p>
+            <a href="register.html" class="btn-primary" style="padding: 15px 40px; font-size: 18px;">Get Started Free</a>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">🔒 Bank-Level Security</div>
+                <div class="trust-badge">💰 High-Interest Savings</div>
+                <div class="trust-badge">🎁 Earn Rewards & Points</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">📝</div>
+                    <h3>1. Create Your Account</h3>
+                    <p>Sign up in minutes and secure your financial future. No hidden charges, just simple and transparent onboarding.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">💰</div>
+                    <h3>2. Choose a Savings Plan</h3>
+                    <p>Pick a plan that suits your needs. Whether it's monthly, growth, or goal-based saving, we have you covered.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">📈</div>
+                    <h3>3. Watch Your Money Grow</h3>
+                    <p>Earn competitive interest rates, accumulate points, and watch your savings flourish over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAVINGS PLANS -->
+    <section id="plans" class="plans-section">
+        <div class="container">
+            <h2 class="section-title">Flexible Savings Plans</h2>
+            <div class="plans-grid">
+                
+                <div class="plan-card">
+                    <h3>Monthly Savings</h3>
+                    <p>Build a consistent savings habit every month with flexible minimum amounts.</p>
+                    <div class="plan-stats">
+                        <div class="stat-box"><span>Interest</span><strong>8%</strong></div>
+                        <div class="stat-box"><span>Duration</span><strong>30 Days</strong></div>
+                        <div class="stat-box"><span>Minimum</span><strong>₦1,000</strong></div>
+                    </div>
+                    <a href="register.html" class="btn-secondary">Start Monthly</a>
+                </div>
+
+                <div class="plan-card featured">
+                    <div class="recommended-tag">Recommended</div>
+                    <h3>Growth Savings</h3>
+                    <p>Keep your money invested longer and earn a higher return on your savings.</p>
+                    <div class="plan-stats">
+                        <div class="stat-box"><span>Interest</span><strong>10%</strong></div>
+                        <div class="stat-box"><span>Duration</span><strong>90 Days</strong></div>
+                        <div class="stat-box"><span>Minimum</span><strong>₦10,000</strong></div>
+                    </div>
+                    <a href="register.html" class="btn-primary">Start Growing</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>Goal Savings</h3>
+                    <p>Save towards a specific financial goal like rent, school, or travel.</p>
+                    <div class="plan-stats">
+                        <div class="stat-box"><span>Interest</span><strong>9%</strong></div>
+                        <div class="stat-box"><span>Duration</span><strong>180 Days</strong></div>
+                        <div class="stat-box"><span>Minimum</span><strong>₦5,000</strong></div>
+                    </div>
+                    <a href="register.html" class="btn-secondary">Start Goal Saving</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="why" class="why-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose BIZCONNECTA?</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">🛡️</div>
+                    <div>
+                        <h4>Unmatched Security</h4>
+                        <p>Your data and funds are protected with advanced encryption and secure infrastructure.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🏆</div>
+                    <div>
+                        <h4>Rewards & Levels</h4>
+                        <p>Earn points for saving, referring friends, and completing milestones to unlock exclusive benefits.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">💸</div>
+                    <div>
+                        <h4>Easy Withdrawals</h4>
+                        <p>Withdraw your earned points and cash into your bank account with just a few clicks.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">📱</div>
+                    <div>
+                        <h4>User-Friendly Platform</h4>
+                        <p>Designed with simplicity in mind so you can manage your savings effortlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Start Growing Your Money?</h2>
+            <p>Join thousands of smart savers today.</p>
+            <a href="register.html">Create Your Free Account</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-column">
+                    <div class="logo">BIZCONNECTA</div>
+                    <p style="color: #aaa5c0; font-size: 13px; margin-top: 10px; line-height: 1.5;">Save consistently. Grow confidently.</p>
+                </div>
+                <div class="footer-column">
+                    <h5>Platform</h5>
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Create Account</a>
+                    <a href="#plans">Savings Plans</a>
+                </div>
+                <div class="footer-column">
+                    <h5>Company</h5>
+                    <a href="#">About Us</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h5>Support</h5>
+                    <a href="#">Help Center</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 BIZCONNECTA. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
